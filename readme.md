@@ -26,9 +26,11 @@ These design notes represent a way to implement a secure IoT application.
 ### Device Mobile Paring
 
  1. User connects to local device private WiFi for setup.
- 2. Setup requests home WiFi access credentials.
- 3. User must pair the device with mobile app from the same wifi network.
- 4. IoT Device and mobile app joins wifi network
+ 2. Setup requests household WiFi access credentials.
+ 3. User must pair the device with mobile app from the same WiFi network.
+ 4. IoT Device and mobile app joins household WiFi network.
+ 5. Mobile app remembers IoT Device ID while the device provisions.
+ 6. The mobile app and thermostat are now linked and provisioned.
 
 ### Software Components Implementation
 
