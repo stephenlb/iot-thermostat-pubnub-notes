@@ -39,26 +39,32 @@ These design notes represent a way to implement a secure IoT application.
  5. Mobile app remembers IoT Device ID while the device provisions.
  6. The mobile app and thermostat are now linked and provisioned.
 
+### User Device Management
+
+ - Mobile app sends signals to control IoT device.
+ - Mobile app retrieves status change records.
+ - Mobile app can ping the devices to test uplink.
+
 ### Software Components Implementation
 
  - Functions - REST Endpoint - Mobile app authenticate
  - Functions - REST Endpoint - Device provision - list of channels, and more
  - Functions - REST Endpoint - Send signed/encrypted control signals to devices
- - Functions - OnAfterPublish - AI/ML tracking anomaly detection
- - Functions - OnBeforePublish - Security signatures and hey asymmetric public key encryption
+ - Functions - onAfterPublish - AI/ML tracking anomaly detection
+ - Functions - onBeforePublish - Security signatures and hey asymmetric public key encryption
  - Presence - Track online status of devices
  - Subscribe - Receive events
- - Grant/Revoke - Add permission to Device/Mobile App to receive events
  - Publish - send signals to thermostat and mobile app
+ - Grant Token - Add permission to Device/Mobile App to send and receive events
 
-### Channels Used for Communication
+### Channels for Communication
 
  - `devices.deviceUniqueID`          - device presence tracking
  - `devices.deviceUniqueID-pnpres`   - device online status ( app subscribes to check device online status )
  - `devices.deviceUniqueID.*`        - device receives events
  - `devices.deviceUniqueID.off`      - turn off HVAC
  - `devices.deviceUniqueID.on`       - turn on HVAC
- - `devices.deviceUniqueID.update`   - set thermostat temperature (overrides schedule for a time)
+ - `devices.deviceUniqueID.temp`     - set thermostat temperature (overrides schedule for a time)
  - `devices.deviceUniqueID.schedule` - set schedule and temperature
  - `devices.deviceUniqueID.reboot`   - issue reboot command to the device
  - `devices.deviceUniqueID.ping`     - ping device channel, causing the LED to blink
