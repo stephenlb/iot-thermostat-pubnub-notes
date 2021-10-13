@@ -5,8 +5,8 @@ Remote control of a thermostat.
 
  - Device provisioning
  - Device software update
- - Turn on/off
- - Set tempurature
+ - Turn on/off thermostat
+ - Set thermostat temperature
  - Remember last state after reboot
 
 ### Software Components
@@ -36,27 +36,30 @@ Remote control of a thermostat.
  - Grant/Revoke - Add permission to Device/Mobile App to receive events
  - Publish - is only used in Functions for security signatures and command encryption
 
+### Channels Used for Communication
 
-### Channels used for communication
-
- - `devices.deviceUniqueID`        - device presence channel
+ - `devices.deviceUniqueID`        - device presence tracking
  - `devices.deviceUniqueID-pnpres` - device online status ( app subscribes to check device online status )
  - `devices.deviceUniqueID.*`      - device receives events
  - `devices.deviceUniqueID.state`  - last state of the device to resume after reboot
- - `devices.deviceUniqueID.ping`   - ping device channel
+ - `devices.deviceUniqueID.ping`   - ping device channel, causing the LED to blink
  - `devices.deviceUniqueID.stats`  - device emits periodic stats to this channel ( used for AI/ML Function )
  - `devices.deviceUniqueID.log`    - device emits logs on this channel ( accessible for debugging and mobile app )
  - `brodcast.*`                    - subscribe to all broadcast signals on device
  - `brodcast.softwareUpdate`       - issue software upgrade command to device
  - `brodcast.reboot`               - issue reboot command to all devices
+ - `brodcast.ping`                 - illuminate the LED indicator on all devices globally
 
-Global_announce_channel  - common channel used by all devices to indicate that they have come online. 
-Global_announce_channel-pnpres - common channel for presence detection, only server has access 
-Private_<device_unique_id>_channel  - both device and server have read access (pre-granted at time of manufacturing)
-Private_<device_unique_id>_channel-pnpres - only server has read access (used to get state information)
-<Random_ch_ID> - Private channels used for secure communication during a session
+### Presence ACL
 
-### Device data fields
+We set the presence ACL to only track presence on `devices.deviceUniqueID` channels.
+
+### PubNub Log Search
+
+Used to track large segements of devices online.
+Debugging of IoT and mobile applications.
+
+### Device Data Fields
 
  - `deviceUniqueID` - Address of the device
  - `deviceSecretKey` - Signature verification
@@ -64,14 +67,14 @@ Private_<device_unique_id>_channel-pnpres - only server has read access (used to
  - `devicePublicKey` - Decrypt message
  - `devicePrivateKey` - Encrypt message
 
-### App data fields
+### Server App Data Fields
 
- - `email` - 
- - `passSignature` - 
- - `devicesIdsOwned` - 
+ - `name` - Name of the household
+ - `passSignature` - access via password authentication stored as a hash
+ - `devicesIdsOwned` - list of owned and provisioned device IDs
 
- Device_Unique_ID is printed on device - externally visible
- Device_Secret_ID - second ID that is also globally unique but is secret - that is on the firmware and is never transmitted in the clear and is not accessible via any API
- Device_Group_Salt - Code uses Salt that is known to server for that class of devices.  This salt is also on the firmware and never transmitted on the network. Its is dynamically generated for each device group and known to both server and clients of the specific type
- Each device also includes a private key/public key pair for encryption. The public keys for all devices are also sent to the server
+### Server App Security Implementation
 
+ - Cryptographic signature
+ - Public/Private encryption
+ - PubNub Access Manager
