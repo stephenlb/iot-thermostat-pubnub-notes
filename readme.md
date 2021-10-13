@@ -1,13 +1,19 @@
-# IoT Thermostat Sample App
+# IoT Thermostat PubNub Notes
 
-Home automation app.
+Home automation Internet of Things app.
 Remote control of a thermostat.
+These design notes represent a way to implement a secure IoT application.
+
+### Product Capabilities
 
  - Device provisioning
  - Device software update
  - Turn on/off thermostat
  - Set thermostat temperature
  - Remember last state after reboot
+ - End-user controllable with mobile app
+ - Vendor IoT fleet administration
+ - Vendor product expandability while devices are online
 
 ### Software Components
 
@@ -27,7 +33,7 @@ Remote control of a thermostat.
 ### Software Components Implementation
 
  - Functions - REST Endpoint - Mobile app authenticate/authorize
- - Functions - REST Endpoint - Device provision endpoint
+ - Functions - REST Endpoint - Device provision endpoint - list of channels, and more.
  - Functions - REST Endpoint - Send signed/encrypted control signals to devices
  - Functions - REST Endpoint - Issue software upgrade broadcast
  - Functions - OnAfterPublish - AI/ML tracking anomaly detection
@@ -54,10 +60,12 @@ Remote control of a thermostat.
 
 We set the presence ACL to only track presence on `devices.deviceUniqueID` channels.
 
-### PubNub Log Search
+### PubNub Log Search (Device Analytics)
 
-Used to track large segements of devices online.
-Debugging of IoT and mobile applications.
+ - Track device population segments of devices online.
+ - Debugging of IoT device and mobile applications.
+ - Analyze geographic distribution and device longevity.
+ - Analyze end-user activity.
 
 ### Device Data Fields
 
