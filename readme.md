@@ -34,12 +34,11 @@ These design notes represent a way to implement a secure IoT application.
 
 ### Software Components Implementation
 
- - Functions - REST Endpoint - Mobile app authenticate/authorize
- - Functions - REST Endpoint - Device provision endpoint - list of channels, and more
+ - Functions - REST Endpoint - Mobile app authenticate
+ - Functions - REST Endpoint - Device provision - list of channels, and more
  - Functions - REST Endpoint - Send signed/encrypted control signals to devices
- - Functions - REST Endpoint - Issue software upgrade broadcast
  - Functions - OnAfterPublish - AI/ML tracking anomaly detection
- - Functions - OnBeforePublish - Security signatures and command public key encryption
+ - Functions - OnBeforePublish - Security signatures and hey asymmetric public key encryption
  - Presence - Track online status of devices
  - Subscribe - Receive events
  - Grant/Revoke - Add permission to Device/Mobile App to receive events
@@ -52,7 +51,7 @@ These design notes represent a way to implement a secure IoT application.
  - `devices.deviceUniqueID.*`        - device receives events
  - `devices.deviceUniqueID.off`      - turn off HVAC
  - `devices.deviceUniqueID.on`       - turn on HVAC
- - `devices.deviceUniqueID.setTemp`  - set thermostat temperature (overrides schedule for a time)
+ - `devices.deviceUniqueID.setValue` - set thermostat temperature or other IoT device configuration
  - `devices.deviceUniqueID.schedule` - set schedule and temperature
  - `devices.deviceUniqueID.reboot`   - issue reboot command to the device
  - `devices.deviceUniqueID.ping`     - ping device channel, causing the LED to blink
