@@ -72,8 +72,8 @@ We set the presence ACL to only track presence on `devices.deviceUniqueID` chann
  - `deviceUniqueID` - Address of the device
  - `deviceSecretKey` - Signature verification
  - `deviceGroupSalt` - Signature verification, appended to signature string and signed by `deviceSecretKey`.
- - `devicePublicKey` - Decrypt message
- - `devicePrivateKey` - Encrypt message
+ - `devicePublicKey` - Encrypt message
+ - `devicePrivateKey` - Decrypt message
 
 ### Server App Data Fields
 
