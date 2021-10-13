@@ -35,14 +35,15 @@ These design notes represent a way to implement a secure IoT application.
 ### Software Components Implementation
 
  - Functions - REST Endpoint - Mobile app authenticate/authorize
- - Functions - REST Endpoint - Device provision endpoint - list of channels, and more.
+ - Functions - REST Endpoint - Device provision endpoint - list of channels, and more
  - Functions - REST Endpoint - Send signed/encrypted control signals to devices
  - Functions - REST Endpoint - Issue software upgrade broadcast
  - Functions - OnAfterPublish - AI/ML tracking anomaly detection
+ - Functions - OnBeforePublish - Security signatures and command public key encryption
  - Presence - Track online status of devices
  - Subscribe - Receive events
  - Grant/Revoke - Add permission to Device/Mobile App to receive events
- - Publish - is only used in Functions for security signatures and command encryption
+ - Publish - send signals to thermostat and mobile app
 
 ### Channels Used for Communication
 
@@ -62,6 +63,7 @@ These design notes represent a way to implement a secure IoT application.
  - `brodcast.softwareUpdate`         - issue software upgrade command to device
  - `brodcast.reboot`                 - issue reboot command to all devices
  - `brodcast.ping`                   - illuminate the LED on all devices globally, as well as log to `devices.deviceUniqueID.log`
+ - `brodcast.saveThePlanet`          - reduces HVAC power consumption world wide
 
 ### Presence ACL
 
