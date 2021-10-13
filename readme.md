@@ -48,13 +48,14 @@ These design notes represent a way to implement a secure IoT application.
  - `devices.deviceUniqueID-pnpres` - device online status ( app subscribes to check device online status )
  - `devices.deviceUniqueID.*`      - device receives events
  - `devices.deviceUniqueID.state`  - last state of the device to resume after reboot
+ - `devices.deviceUniqueID.reboot` - issue reboot command to the device
  - `devices.deviceUniqueID.ping`   - ping device channel, causing the LED to blink
  - `devices.deviceUniqueID.stats`  - device emits periodic stats to this channel ( used for AI/ML Function )
  - `devices.deviceUniqueID.log`    - device emits logs on this channel ( accessible for debugging and mobile app )
  - `brodcast.*`                    - subscribe to all broadcast signals on device
  - `brodcast.softwareUpdate`       - issue software upgrade command to device
  - `brodcast.reboot`               - issue reboot command to all devices
- - `brodcast.ping`                 - illuminate the LED indicator on all devices globally
+ - `brodcast.ping`                 - illuminate the LED on all devices globally, as well as log to `devices.deviceUniqueID.log`
 
 ### Presence ACL
 
