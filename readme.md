@@ -23,6 +23,13 @@ These design notes represent a way to implement a secure IoT application.
  - Data Streaming Provider PubNub
  - AI/ML Data Processing Stream onAfter Functions
 
+### Server App Security Implementation
+
+ - Cryptographic signature
+ - Public/Private encryption
+ - PubNub Access Manager
+ - User Authentication
+
 ### Device Mobile Paring
 
  1. User connects to local device private WiFi for setup.
@@ -51,7 +58,7 @@ These design notes represent a way to implement a secure IoT application.
  - `devices.deviceUniqueID.*`        - device receives events
  - `devices.deviceUniqueID.off`      - turn off HVAC
  - `devices.deviceUniqueID.on`       - turn on HVAC
- - `devices.deviceUniqueID.setValue` - set thermostat temperature or other IoT device configuration
+ - `devices.deviceUniqueID.update`   - set thermostat temperature (overrides schedule for a time)
  - `devices.deviceUniqueID.schedule` - set schedule and temperature
  - `devices.deviceUniqueID.reboot`   - issue reboot command to the device
  - `devices.deviceUniqueID.ping`     - ping device channel, causing the LED to blink
@@ -75,22 +82,21 @@ We set the presence ACL to only track presence on `devices.deviceUniqueID` chann
  - Analyze geographic distribution and device longevity.
  - Analyze end-user activity.
 
-### Device Data Fields
+### Data Fields
 
- - `deviceUniqueID` - Address of the device
- - `deviceSecretKey` - Signature verification
- - `deviceGroupSalt` - Signature verification, appended to signature string and signed by `deviceSecretKey`.
- - `devicePublicKey` - Encrypt message
- - `devicePrivateKey` - Decrypt message
+The two entities are `users` and `devices`.
 
-### Server App Data Fields
+#### Users
 
  - `name` - Name of the household
  - `passSignature` - access via password authentication stored as a hash
  - `devicesIdsOwned` - list of owned and provisioned device IDs
 
-### Server App Security Implementation
+#### Devices
 
- - Cryptographic signature
- - Public/Private encryption
- - PubNub Access Manager
+ - `deviceName` - Name of the device in the household
+ - `deviceUniqueID` - Address of the device
+ - `deviceSecretKey` - Signature verification
+ - `deviceGroupSalt` - Signature verification, appended to signature string and signed by `deviceSecretKey`.
+ - `devicePublicKey` - Encrypt message
+ - `devicePrivateKey` - Decrypt message
