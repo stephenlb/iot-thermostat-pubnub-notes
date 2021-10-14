@@ -68,11 +68,11 @@ These channels are used for sending/receiving events.
 
 Devices will subscribe to `.*` channels to receive events.
 
- - `devices.deviceUniqueID`          - device presence tracking
- - `devices.deviceUniqueID.*`        - device receives events
- - `brodcast.*`                      - subscribe to all broadcast signals on device
+ - `devices.deviceUniqueID`   - device presence tracking
+ - `devices.deviceUniqueID.*` - device receives events
+ - `brodcast.*`               - subscribe to all broadcast signals on device
 
-#### Events and Actions Channels
+#### Events and Actions
 
  - `devices.deviceUniqueID-pnpres`   - device online status ( app subscribes to check device online status )
 
@@ -86,24 +86,27 @@ Devices and servers will publish to these specific channels.
  - `devices.deviceUniqueID.schedule` - set schedule and temperature
  - `devices.deviceUniqueID.reboot`   - issue reboot command to the device
  - `devices.deviceUniqueID.ping`     - ping device channel, causing the LED to blink
- - `devices.deviceUniqueID.stats`    - device emits periodic stats to this channel ( used for AI/ML Function )
- - `devices.deviceUniqueID.log`      - device emits logs on this channel ( accessible for debugging and mobile app )
+
+#### Publish Channels for Functions Insights
+
  - `devices.deviceUniqueID.insights` - AI/ML insights channel
  - `devices.deviceUniqueID.anomaly`  - AI/ML anomaly notification
+
+#### Publish Channels for Device Sensors and Streams
+
+ - `sensors.deviceUniqueID.thermometer` - device emits temperature readings and HVAC efficiency
+ - `devices.deviceUniqueID.stats`       - device emits periodic stats to this channel ( used for AI/ML Function )
+ - `devices.deviceUniqueID.log`         - device emits logs on this channel ( accessible for debugging and mobile app )
 
 #### Publish Channels for Global Device Broadcasting
 
 Vendors may trigger a command on all devices, globally.
 
- - `brodcast.notification`           - displays a message on the mobile app and the IoT Thermostat UI
- - `brodcast.softwareUpdate`         - issue software upgrade command to device
- - `brodcast.reboot`                 - issue reboot command to all devices
- - `brodcast.ping`                   - illuminate the LED on all devices globally, as well as log to `devices.deviceUniqueID.log`
- - `brodcast.saveThePlanet`          - reduces HVAC power consumption world wide
-
-#### Publish Channels for Device Sensor Streams
-
- - `sensors.deviceUniqueID.temp`     - device emits temperature readings and HVAC efficiency
+ - `brodcast.notification`   - displays a message on the mobile app and the IoT Thermostat UI
+ - `brodcast.softwareUpdate` - issue software upgrade command to device
+ - `brodcast.reboot`         - issue reboot command to all devices
+ - `brodcast.ping`           - illuminate the LED on all devices globally, as well as log to `devices.deviceUniqueID.log`
+ - `brodcast.saveThePlanet`  - reduces HVAC power consumption world wide
 
 ### Presence ACL
 
@@ -122,17 +125,17 @@ The two entities are `users` and `devices`.
 
 #### Users
 
- - `name` - Name of the household
- - `passSignature` - access via password authentication stored as a hash
+ - `name`            - Name of the household
+ - `passSignature`   - access via password authentication stored as a hash
  - `devicesIdsOwned` - list of owned and provisioned device IDs
 
 #### Devices
 
- - `deviceName` - Name of the device in the household
- - `deviceUniqueID` - Address of the device
- - `deviceSecretKey` - Signature verification
- - `deviceGroupSalt` - Signature verification, appended to signature string and signed by `deviceSecretKey`.
- - `devicePublicKey` - Encrypt message
+ - `deviceName`       - Name of the device in the household
+ - `deviceUniqueID`   - Address of the device
+ - `deviceSecretKey`  - Signature verification
+ - `deviceGroupSalt`  - Signature verification, appended to signature string and signed by `deviceSecretKey`.
+ - `devicePublicKey`  - Encrypt message
  - `devicePrivateKey` - Decrypt message
 
 ## Workflows

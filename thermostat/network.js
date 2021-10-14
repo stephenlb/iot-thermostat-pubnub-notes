@@ -1,28 +1,32 @@
 class Network {
-    constructor() {
-        this.channels = [];
-        this.origin = 'ps.pndsn.com';
-        this.publishKey = '';
-        this.subscribeKey = '';
-        this.pubnub = PubNub({
-            origin: this.origin,
-            pubkey: this.pubkey,
-            subkey: this.subkey,
+    constructor(settings) {
+        this.channels = settings.channels;
+        this.settings = settings;
+        this.pubnub   = PubNub({
+            origin:       this.settings.origin,
+            publishKey:   this.settings.pubkey,
+            subscribeKey: this.settings.subkey,
         });
     }
 
+    // https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/login
     async login(email, password, pushId) {
-        let path = ``;
-        let url = `https://${this.origin}/${path}`;
-        let result = await fetch(`${uri}`);
+        let path   = `login`;
+        let url    = `https://${this.origin}/${this.subkey}/${path}`;
+        let result = await fetch(uri);
+        console.log(result);
         //... capture result and put it into class var
     }
 
     // https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/provision
     async provision(device) {
-        let id = device.deviceUniqueID;
-        let url = `https://${this.origin}/`;
-        return await fetch(`${uri}`);
+        let id      = device.deviceUniqueID;
+        let message = {id: id};
+        let path    = `login`;
+        let url     = `https://${this.origin}/${this.subkey}/${path}`;
+        let result  = await fetch(uri);
+        console.log(result);
+        //return await fetch(`${uri}`);
     }
 
     async commandReceiverStart() {

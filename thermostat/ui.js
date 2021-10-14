@@ -1,18 +1,15 @@
 (()=>{
 'use strict';
 
-// Get libraries
-const network = new Network();
-const sound = new Sound();
-
 // UI Temperature Values
 let temperature = 72;
 let dragOffset = 0;
 
 // UI Elements
-const body = document.querySelector('body');
-const hot  = document.querySelector('#set div.hot');
-const cold = document.querySelector('#set div.cold');
+const body     = document.querySelector('body');
+const tempDisp = document.querySelector('#temperature');
+const hot      = document.querySelector('#set div.hot');
+const cold     = document.querySelector('#set div.cold');
 
 // UI Event Listeners
 body.addEventListener('click', readySoundAndScreen, {passive: false});
@@ -22,6 +19,7 @@ body.addEventListener('touchstart', dragStart, {passive: false});
 body.addEventListener('mousemove', drag, {passive: false});
 body.addEventListener('touchmove', drag, {passive: false});
 
+// UI Control Methods
 function clientY(event) {
     return (event.touches && event.touches[0] || event).clientY;
 }
@@ -56,10 +54,10 @@ function readySoundAndScreen() {
     }
 }
 
-const temperatureDisplay = document.querySelector('#temperature');
+// Update Temperature Display Value
 function setTemperature(degrees) {
     temperature = degrees;
-    temperatureDisplay.innerHTML = degrees;
+    tempDisp.innerHTML = degrees;
 }
 
 })();

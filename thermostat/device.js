@@ -6,5 +6,8 @@ class Device {
         this.devicePublicKey  = "123456";
         this.devicePrivateKey = "123456";
     }
+
+    provision() {
+    }
 }
 
