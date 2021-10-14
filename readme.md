@@ -106,3 +106,26 @@ The two entities are `users` and `devices`.
  - `deviceGroupSalt` - Signature verification, appended to signature string and signed by `deviceSecretKey`.
  - `devicePublicKey` - Encrypt message
  - `devicePrivateKey` - Decrypt message
+
+
+## Workflows
+
+The following are representation of the PubNub APIs used.
+Each section represents a workflow of API calls to complete a task or command.
+
+#### IoT Device Provision
+
+ - https://ps.pndsn.com/kj rest api
+
+#### IoT Device Connect to PubNub
+
+ - ...
+
+#### Mobile App Authentication / Authorization
+
+ - ...
+
+#### Mobile App Send Update Signals
+
+ - ...
+

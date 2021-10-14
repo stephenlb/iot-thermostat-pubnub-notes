@@ -1,0 +1,65 @@
+body, div, span {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Helvetica Neue";
+    font-weight: 100;
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+}
+body {
+    background: red;
+    background: black;
+}
+div#layout {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+div#temperature {
+    flex: 4;
+    line-height: 100vh;
+    font-size: calc((30vh + 20vw) / 2);
+    text-align: center;
+}
+div#temperature::after {
+    content: '\00b0';
+}
+div#set {
+    flex: 2;
+}
+div#set div.hot {
+    letter-spacing: 1px;
+    margin-top: 1vh;
+    line-height: 49vh;
+    background: radial-gradient(circle at center, #ff1166 17%, transparent 22%), transparent;
+    background-repeat: repeat-y;
+    background-position: 10vw 8vh;
+    background-size: 45px 45px;
+    -webkit-mask-image: linear-gradient(to top, transparent 0px, transparent 40px, black 42px, black 50%, transparent 90%);
+}
+div#set div.cold {
+    letter-spacing: 1px;
+    margin-bottom: 1vh;
+    line-height: 49vh;
+    background: radial-gradient(circle at center, #22aeff 17%, transparent 22%), transparent;
+    background-repeat: repeat-y;
+    background-position: 10vw 10vh;
+    background-size: 45px 45px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0px, transparent 40px, black 42px, black 50%, transparent 90%);
+}
+div#set div.center {
+    position: relative;
+}
+div#set div.center div.circle {
+    position: absolute;
+    top: -40px;
+    left: calc(10vw - 18px);
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 120px 40px rgba(255,255,255,0.4);
+    z-index: 100;
+}
