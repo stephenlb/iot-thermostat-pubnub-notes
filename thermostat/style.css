@@ -9,7 +9,6 @@ body, div, span {
     color: rgba(255,255,255,0.9);
 }
 body {
-    background: red;
     background: black;
 }
 div#layout {

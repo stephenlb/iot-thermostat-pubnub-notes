@@ -71,7 +71,10 @@ These design notes represent a way to implement a secure IoT application.
  - `devices.deviceUniqueID.stats`    - device emits periodic stats to this channel ( used for AI/ML Function )
  - `devices.deviceUniqueID.log`      - device emits logs on this channel ( accessible for debugging and mobile app )
  - `devices.deviceUniqueID.state`    - last state of the device to resume after reboot
+ - `devices.deviceUniqueID.insights` - AI/ML insights channel
+ - `devices.deviceUniqueID.anomaly`  - AI/ML anomaly notification
  - `brodcast.*`                      - subscribe to all broadcast signals on device
+ - `brodcast.notification`           - displays a message on the mobile app and the IoT Thermostat UI
  - `brodcast.softwareUpdate`         - issue software upgrade command to device
  - `brodcast.reboot`                 - issue reboot command to all devices
  - `brodcast.ping`                   - illuminate the LED on all devices globally, as well as log to `devices.deviceUniqueID.log`
@@ -107,25 +110,28 @@ The two entities are `users` and `devices`.
  - `devicePublicKey` - Encrypt message
  - `devicePrivateKey` - Decrypt message
 
-
 ## Workflows
 
 The following are representation of the PubNub APIs used.
 Each section represents a workflow of API calls to complete a task or command.
 
-#### IoT Device Provision
+#### IoT Thermostat Device Provision
 
  - https://ps.pndsn.com/kj rest api
 
-#### IoT Device Connect to PubNub
+#### IoT Thermostat Device Connect to PubNub
 
- - ...
+ - https://ps.pndsn.com/kj rest api
+ - pubnub.subscribe
 
 #### Mobile App Authentication / Authorization
 
- - ...
+ - https://ps.pndsn.com/kj rest api
+ - pubnub.subscribe
 
-#### Mobile App Send Update Signals
+#### Mobile App Send Commands to Thermostat
 
- - ...
+ - publish/devices.deviceUniqueID.temp/
+ - publish/devices.deviceUniqueID.on/
+ - publish/devices.deviceUniqueID.off/
 

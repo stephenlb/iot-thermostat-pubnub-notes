@@ -39,6 +39,7 @@ function drag(event) {
     if (change == 0) return;
     setTemperature(temperature + change);
     dragOffset = clientY(event);
+    navigator.vibrate(200);
 }
 
 const temperatureDisplay = document.querySelector('#temperature');
