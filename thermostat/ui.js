@@ -1,22 +1,22 @@
 (()=>{
 'use strict';
 
+// Get libraries
 const network = new Network();
-let sound = null;
+const sound = new Sound();
 
-// Connect to cloud sending deviceUniqueID
-// Receive channels, permissions and saved configuration
-
-// UI Temperature Change
+// UI Temperature Values
 let temperature = 72;
 let dragOffset = 0;
 
+// UI Elements
 const body = document.querySelector('body');
 const hot  = document.querySelector('#set div.hot');
 const cold = document.querySelector('#set div.cold');
 
-body.addEventListener('click', readySound, {passive: false});
-body.addEventListener('touchend', readySound, {passive: false});
+// UI Event Listeners
+body.addEventListener('click', readySoundAndScreen, {passive: false});
+body.addEventListener('touchend', readySoundAndScreen, {passive: false});
 body.addEventListener('mousedown', dragStart, {passive: false});
 body.addEventListener('touchstart', dragStart, {passive: false});
 body.addEventListener('mousemove', drag, {passive: false});
@@ -25,10 +25,12 @@ body.addEventListener('touchmove', drag, {passive: false});
 function clientY(event) {
     return (event.touches && event.touches[0] || event).clientY;
 }
+
 function dragStart(event) {
     event.preventDefault(); 
     dragOffset = clientY(event);
 }
+
 function drag(event) {
     event.preventDefault(); 
     if (event.buttons == 0) return;
@@ -43,12 +45,12 @@ function drag(event) {
     setTemperature(temperature + change);
     dragOffset = clientY(event);
 
-    if (sound) sound.play(240.0, 'sine', 0.2);
+    sound.play(240.0, 'sine', 0.2);
 }
-function readySound() {
+
+function readySoundAndScreen() {
     event.preventDefault(); 
-    if (sound) return;
-    sound = new Sound(); 
+    sound.ready();
     if (/iPad|iPhone|Android/.test(navigator.userAgent)) {
         document.documentElement.requestFullscreen();
     }

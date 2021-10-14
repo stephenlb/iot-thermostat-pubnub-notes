@@ -1,9 +1,17 @@
 class Sound {
     constructor() {
+        this.isReady = false;
+    }
+
+    ready() {
+        if (this.context) return;
         this.context = new AudioContext();
+        this.isReady = true;
     }
 
     play(frequency=200.0, type='sine', duration=1) {
+        if (!this.isReady) return;
+
         let o = this.context.createOscillator()
         let g = this.context.createGain()
 
