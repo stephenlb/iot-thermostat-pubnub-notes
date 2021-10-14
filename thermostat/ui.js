@@ -2,6 +2,7 @@
 'use strict';
 
 const network = new Network();
+const sound = new Sound();
 
 // Connect to cloud sending deviceUniqueID
 // Receive channels, permissions and saved configuration
@@ -39,6 +40,8 @@ function drag(event) {
     if (change == 0) return;
     setTemperature(temperature + change);
     dragOffset = clientY(event);
+
+    sound.play(240.0, 'sine', 0.2);
 }
 
 const temperatureDisplay = document.querySelector('#temperature');
