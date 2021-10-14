@@ -62,9 +62,23 @@ These design notes represent a way to implement a secure IoT application.
 
 ### Channels for Communication
 
+These channels are used for sending/receiving events.
+
+#### Subscribe Channels
+
+Devices will subscribe to `.*` channels to receive events.
+
  - `devices.deviceUniqueID`          - device presence tracking
- - `devices.deviceUniqueID-pnpres`   - device online status ( app subscribes to check device online status )
  - `devices.deviceUniqueID.*`        - device receives events
+ - `brodcast.*`                      - subscribe to all broadcast signals on device
+
+#### Publish Channels
+
+Devices and servers will publish to these specific channels.
+
+ - `sensors.deviceUniqueID.temp`     - device emits temperature readings and HVAC efficiency
+
+ - `devices.deviceUniqueID-pnpres`   - device online status ( app subscribes to check device online status )
  - `devices.deviceUniqueID.off`      - turn off HVAC
  - `devices.deviceUniqueID.on`       - turn on HVAC
  - `devices.deviceUniqueID.temp`     - set thermostat temperature (overrides schedule for a time)
@@ -73,10 +87,9 @@ These design notes represent a way to implement a secure IoT application.
  - `devices.deviceUniqueID.ping`     - ping device channel, causing the LED to blink
  - `devices.deviceUniqueID.stats`    - device emits periodic stats to this channel ( used for AI/ML Function )
  - `devices.deviceUniqueID.log`      - device emits logs on this channel ( accessible for debugging and mobile app )
- - `devices.deviceUniqueID.state`    - last state of the device to resume after reboot
  - `devices.deviceUniqueID.insights` - AI/ML insights channel
  - `devices.deviceUniqueID.anomaly`  - AI/ML anomaly notification
- - `brodcast.*`                      - subscribe to all broadcast signals on device
+
  - `brodcast.notification`           - displays a message on the mobile app and the IoT Thermostat UI
  - `brodcast.softwareUpdate`         - issue software upgrade command to device
  - `brodcast.reboot`                 - issue reboot command to all devices
