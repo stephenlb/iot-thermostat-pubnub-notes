@@ -117,13 +117,12 @@ Each section represents a workflow of API calls to complete a task or command.
 
 #### IoT Thermostat Device Provision
 
- add in SDK example
-
  show this as REST API
 
  - https://ps.pndsn.com/kj rest api
 
 #### IoT Thermostat Device Connect to PubNub
+ add in SDK example
 
  - https://ps.pndsn.com/kj rest api
  - pubnub.subscribe
