@@ -1,8 +1,10 @@
-# IoT Thermostat PubNub Notes
+# IoT Thermostat PubNub Design Notes
 
 Home automation Internet of Things app.
 Remote control of a thermostat.
 These design notes represent a way to implement a secure IoT application.
+
+![IoT Thermostat Design](https://i.imgur.com/o4lTRdK.png)
 
 ### Product Capabilities
 
@@ -95,8 +97,8 @@ Devices and servers will publish to these specific channels.
 #### Publish Channels for Device Sensors and Streams
 
  - `sensors.deviceUniqueID.thermometer` - device emits temperature readings and HVAC efficiency
- - `devices.deviceUniqueID.stats`       - device emits periodic stats to this channel ( used for AI/ML Function )
- - `devices.deviceUniqueID.log`         - device emits logs on this channel ( accessible for debugging and mobile app )
+ - `sensors.deviceUniqueID.stats`       - device emits periodic stats to this channel ( used for AI/ML Function )
+ - `sensors.deviceUniqueID.log`         - device emits logs on this channel ( accessible for debugging and mobile app )
 
 #### Publish Channels for Global Device Broadcasting
 
@@ -142,6 +144,8 @@ The two entities are `users` and `devices`.
 
 The following are representation of the PubNub APIs used.
 Each section represents a workflow of API calls to complete a task or command.
+
+![IoT Thermostat Design Secure Workflow](https://i.imgur.com/LOlA86R.png)
 
 #### IoT Thermostat Device Provision
 
