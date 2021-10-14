@@ -46,6 +46,7 @@ function drag(event) {
     if (sound) sound.play(240.0, 'sine', 0.2);
 }
 function startSound() {
+    event.preventDefault(); 
     if (!sound) sound = new Sound(); 
 }
 
