@@ -49,7 +49,9 @@ function readySound() {
     event.preventDefault(); 
     if (sound) return;
     sound = new Sound(); 
-    document.documentElement.requestFullscreen();
+    if (/iPad|iPhone|Android/.test(navigator.userAgent)) {
+        document.documentElement.requestFullscreen();
+    }
 }
 
 const temperatureDisplay = document.querySelector('#temperature');
