@@ -12,6 +12,14 @@ class Sound {
         o.frequency.value = frequency;
         g.connect(this.context.destination);
         o.start(0);
-        g.gain.exponentialRampToValueAtTime(0.00001, this.context.currentTime + duration);
+
+        g.gain.setValueAtTime(g.gain.value, this.context.currentTime); 
+        g.gain.exponentialRampToValueAtTime(1e-10, this.context.currentTime + duration);
+
+        setTimeout(() => {
+            o.stop(0);
+            g.disconnect(this.context.destination);
+            o.disconnect(g);
+        }, duration * 1000);
     }
 }

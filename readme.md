@@ -9,10 +9,13 @@ These design notes represent a way to implement a secure IoT application.
  - Device provisioning
  - Device software update
  - Turn on/off thermostat
+ - Online Status
+ - Historical Analytics
  - Set thermostat temperature
  - Remember last state after reboot
  - End-user controllable with mobile app
- - Vendor IoT fleet administration
+ - Vendor IoT fleet global administration
+ - Vendor global view - see all online devices
  - Vendor product expandability while devices are online
 
 ### Software Components
