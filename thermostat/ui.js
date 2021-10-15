@@ -1,8 +1,12 @@
+// Thermostat temperature
+let temperature = 72;
+
 class UI {
     constructor() {
         this.temperature = document.querySelector('#temperature');
     }
     updateTemperature(degrees) {
+        temperature = degrees;
         this.temperature.innerHTML = degrees;
     }
 }
@@ -11,7 +15,6 @@ class UI {
 'use strict';
 
 // UI Temperature Values
-let temperature = 72;
 let dragOffset = 0;
 
 // UI Elements

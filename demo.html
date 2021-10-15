@@ -1,0 +1,42 @@
+<style>
+iframe, body, div {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Helvetica Neue";
+    font-weight: 100;
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+}
+#layout div.thermostat iframe {
+    width: 500px;
+    height: 400px;
+}
+#layout div.mobile iframe {
+    width: 300px;
+    height: 600px;
+}
+#layout {
+    display: flex;
+    width: 100vw;
+    height: 100vw;
+}
+#layout div {
+    flex: 1;
+    text-align: center;
+    line-height: 100vh;
+}
+</style>
+
+<div id="layout">
+    <!-- Thermostat IoT Device Demo -->
+    <div class="thermostat">
+        <iframe src="thermostat/index.html"></iframe>
+    </div>
+
+    <!-- Mobile App Demo -->
+    <div class="mobile">
+        <iframe src="thermostat/index.html"></iframe>
+    </div>
+</div>
