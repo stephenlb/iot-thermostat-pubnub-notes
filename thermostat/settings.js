@@ -9,5 +9,7 @@ class Settings {
         this.deviceGroupSalt  = "123456";
         this.devicePublicKey  = "123456";
         this.devicePrivateKey = "123456";
+        this.isDevice         = location.href.indexOf('isDevice=1') > 0;
+        this.isUser           = !this.isDevice;
     }
 }
