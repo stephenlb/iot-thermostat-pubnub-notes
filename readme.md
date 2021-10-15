@@ -4,7 +4,7 @@ Home automation Internet of Things app.
 Remote control of a thermostat.
 These design notes represent a way to implement a secure IoT application.
 
-![IoT Thermostat Design](https://i.imgur.com/o4lTRdK.png)
+![IoT Thermostat Design](https://i.imgur.com/53WzABI.png)
 
 ### Product Capabilities
 
