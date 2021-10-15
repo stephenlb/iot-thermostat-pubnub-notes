@@ -1,5 +1,7 @@
 # IoT Thermostat PubNub Design Notes
 
+> [Try the demo!](https://stephenlb.github.io/iot-thermostat-pubnub-notes/demo.html)
+
 Home automation Internet of Things app.
 Remote control of a thermostat.
 These design notes represent a way to implement a secure IoT application.
