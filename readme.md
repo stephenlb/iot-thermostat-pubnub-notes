@@ -153,13 +153,13 @@ Running via PubNub Functions.
 
 ![IoT Thermostat Design Secure Workflow](https://i.imgur.com/LOlA86R.png)
 
-#### IoT Thermostat Device Provision
-
- - https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/provision
-
 #### Mobile App Authentication / Authorization
 
  -  https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/login
+
+#### IoT Thermostat Device Provision
+
+ - https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/provision
 
 #### IoT Thermostat Device Connect to PubNub
 
