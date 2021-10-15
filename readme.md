@@ -21,6 +21,7 @@ These design notes represent a way to implement a secure IoT application.
  - Remember last state after reboot
  - End-user controllable with mobile app
  - Custom actions to enable chain of events based on household rule settings.
+ - Smart speaker integrations with Amazon Echo, Google Home and Apple HomeKit.
  - Vendor IoT fleet global administration
  - Vendor global view - see all online devices
  - Vendor product expandability while devices are online
