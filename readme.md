@@ -140,33 +140,28 @@ The two entities are `users` and `devices`.
  - `devicePublicKey`  - Encrypt message
  - `devicePrivateKey` - Decrypt message
 
-## Workflows
+## Functions
 
-The following are representation of the PubNub APIs used.
-Each section represents a workflow of API calls to complete a task or command.
+> See [network.js](thermostat/network.js) source.
+
+APIs to complete a task or command.
+Running via PubNub Functions.
 
 ![IoT Thermostat Design Secure Workflow](https://i.imgur.com/LOlA86R.png)
 
 #### IoT Thermostat Device Provision
 
- show this as REST API
-
- - https://ps.pndsn.com/kj rest api
-
-#### IoT Thermostat Device Connect to PubNub
- add in SDK example
-
- - https://ps.pndsn.com/kj rest api
- - pubnub.subscribe
+ - https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/provision
 
 #### Mobile App Authentication / Authorization
 
- - https://ps.pndsn.com/kj rest api
- - pubnub.subscribe
+ -  https://ps.pndsn.com/v1/blocks/sub-key/sub-c-c7d8b0d0-2d1d-11ec-83d0-f27e7ede0273/login
+
+#### IoT Thermostat Device Connect to PubNub
+
+ - `pubnub.subscribe()`
 
 #### Mobile App Send Commands to Thermostat
 
- - publish/devices.deviceUniqueID.temp/
- - publish/devices.deviceUniqueID.on/
- - publish/devices.deviceUniqueID.off/
+ - `pubnub.publish()`
 
