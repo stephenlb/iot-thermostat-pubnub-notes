@@ -65,6 +65,7 @@ These design notes represent a way to implement a secure IoT application.
  - Subscribe - Receive events
  - Publish - send signals to thermostat and mobile app
  - Grant Token - Add permission to Device/Mobile App to send and receive events
+ - Objects V2 - Users and Device Registry Management
 
 ### Channels for Communication
 
