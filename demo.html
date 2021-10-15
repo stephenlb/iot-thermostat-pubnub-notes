@@ -7,36 +7,55 @@ iframe, body, div {
     font-family: "Helvetica Neue";
     font-weight: 100;
     font-size: 20px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,0,0,1);
 }
-#layout div.thermostat iframe {
-    width: 500px;
-    height: 400px;
-}
-#layout div.mobile iframe {
-    width: 300px;
-    height: 600px;
-}
+
 #layout {
     display: flex;
     width: 100vw;
     height: 100vw;
 }
-#layout div {
+#layout > div {
     flex: 1;
     text-align: center;
-    line-height: 100vh;
+}
+
+/* Thermostat View */
+div.thermostat div {
+    padding-top: calc(50vh - 200px);
+}
+div.thermostat iframe {
+    width: 500px;
+    height: 400px;
+    border-radius: 140px;
+    box-shadow: 0 0 20px 20px rgba(0,0,0,0.2);
+}
+
+/* Mobile View */
+div.mobile div {
+    padding-top: calc(50vh - 300px);
+}
+#layout div.mobile iframe {
+    width: 300px;
+    height: 600px;
+    border-radius: 40px;
+}
+div.mobile {
+    background: url(https://i.imgur.com/NnFoExw.png);
+    background-repeat: no-repeat;
+    background-position: calc(25vw - 155px) calc(50vh - 310px);
+    background-size: 310px;
 }
 </style>
 
 <div id="layout">
     <!-- Thermostat IoT Device Demo -->
     <div class="thermostat">
-        <iframe src="thermostat/index.html"></iframe>
+        <div><iframe src="thermostat/index.html"></iframe></div>
     </div>
 
     <!-- Mobile App Demo -->
     <div class="mobile">
-        <iframe src="thermostat/index.html"></iframe>
+        <div><iframe src="thermostat/index.html"></iframe></div>
     </div>
 </div>
