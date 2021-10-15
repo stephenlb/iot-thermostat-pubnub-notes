@@ -79,7 +79,8 @@ Devices will subscribe to `.*` channels to receive events.
 
  - `devices.deviceUniqueID`   - device presence tracking
  - `devices.deviceUniqueID.*` - device receives events
- - `brodcast.*`               - subscribe to all broadcast signals on device
+ - `household.homeUniqueID.*` - broadcast events within a home
+ - `brodcast.*`               - admin can broadcast signals on device globally
 
 #### Events and Actions
 
