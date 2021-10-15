@@ -1,10 +1,11 @@
 class Device {
-    constructor() {
-        this.deviceUniqueID   = "12345";
-        this.deviceSecretKey  = "12345";
-        this.deviceGroupSalt  = "12345";
-        this.devicePublicKey  = "12345";
-        this.devicePrivateKey = "12345";
+    constructor(settings) {
+        this.settings         = settings;
+        this.deviceUniqueID   = settings.deviceUniqueID;
+        this.deviceSecretKey  = settings.deviceSecretKey;
+        this.deviceGroupSalt  = settings.deviceGroupSalt;
+        this.devicePublicKey  = settings.devicePublicKey;
+        this.devicePrivateKey = settings.devicePrivateKey;
     }
 
     provision() {

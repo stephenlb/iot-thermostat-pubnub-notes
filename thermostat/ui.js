@@ -1,3 +1,12 @@
+class UI {
+    constructor() {
+        this.temperature = document.querySelector('#temperature');
+    }
+    updateTemperature(degrees) {
+        this.temperature.innerHTML = degrees;
+    }
+}
+
 (()=>{
 'use strict';
 
@@ -56,6 +65,10 @@ function readySoundAndScreen() {
 
 // Update Temperature Display Value
 function setTemperature(degrees) {
+    if (user.uuid && user.devices) {
+        let metadata = {uuid: user.uuid, instanceId: user.instanceId};
+        network.commandSend(user.devices[0], 'temp', degrees, metadata);
+    }
     temperature = degrees;
     tempDisp.innerHTML = degrees;
 }

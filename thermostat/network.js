@@ -49,11 +49,12 @@ class Network {
         return subscription;
     }
 
-    async commandSend(device, command, message) {
-        let id = device.deviceUniqueID;
+    async commandSend(deviceId, command, message, metadata) {
+        let transmit = {message: message, command: command, metadata: metadata};
         return this.pubnub.publish({
-            channel : `devices.${id}.${command}`,
-            message : message
+            channel:  `devices.${deviceId}.${command}`,
+            message:  transmit,
+            metadata: metadata,
         });
     }
 }
