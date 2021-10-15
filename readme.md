@@ -20,6 +20,7 @@ These design notes represent a way to implement a secure IoT application.
  - Set thermostat temperature
  - Remember last state after reboot
  - End-user controllable with mobile app
+ - Custom actions to enable chain of events based on household rule settings.
  - Vendor IoT fleet global administration
  - Vendor global view - see all online devices
  - Vendor product expandability while devices are online
